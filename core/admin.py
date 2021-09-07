@@ -1,5 +1,16 @@
 from django.contrib import admin
 from .models import *
 
-# Register your models here.
-admin.site.register(Evento)
+
+@admin.register(Evento)
+class EventoAdmin(admin.ModelAdmin):
+    list_display = (
+        'nome',
+        'organizadores',
+        'data_inicio',
+        'data_fim',
+        # 'url',
+        'criado',
+        'modificado',
+        'ativo'
+    )
