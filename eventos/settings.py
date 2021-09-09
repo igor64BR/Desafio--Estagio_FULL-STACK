@@ -9,10 +9,13 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+from os.path import join
 from pathlib import Path
+import rest_framework
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+import rest_framework.authentication
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -25,18 +28,26 @@ SECRET_KEY = 'django-insecure-&*oftkwrp_6+kc(t0d2oe!o+_zftcmq+tp)v&4@hlrn1n-g=un
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    # Aplicações padrão do Django
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Aplicações padrão do Django REST
+    'rest_framework',
+    'django_filters',
+    'rest_framework.authtoken',
+    # Apps locais
+    'eventos',
+
 ]
 
 MIDDLEWARE = [
@@ -103,9 +114,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
@@ -118,8 +129,28 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATC_ROOT = join(BASE_DIR, 'staticfiles')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# DRF
+REST_FRAMEWORK = {
+    # Formas de autenticação possíveis
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',   # Autenticação por log in
+        'rest_framework.authentication.TokenAuthentication'      # Autenticação por token
+    ),
+    # Restrições de ações
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',  # Se o user não estiver autenticado, só poderá utilizar
+                                                                 # o GET
+    ),
+    # Paginação
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 5
+}
