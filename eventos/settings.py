@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+
 """
 Login para a área de administração:
     Login: administrador
@@ -49,6 +50,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Bootstrap e mídia
+    'stdimage',
+    'bootstrap4',
     # Aplicações padrão do Django REST
     'rest_framework',
     'django_filters',
@@ -73,7 +77,7 @@ ROOT_URLCONF = 'eventos.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

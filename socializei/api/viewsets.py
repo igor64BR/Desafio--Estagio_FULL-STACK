@@ -20,6 +20,7 @@ class EventoViewSet(
     serializer_class = EventoSerializer
 
     def create(self, request, *args, **kwargs):
+        print(help(request))
         serializer = self.get_serializer(data=request.data)
         data = request.data
         erros = []
@@ -60,6 +61,8 @@ class EventoViewSet(
                 erros.append('Faltam as \'/\' em uma das datas')
         except IndexError:
             erros.append('Faltam campos separados por \'/\'')
+        except ValueError:
+            erros.append('Algo nas suas datas não está certo')
 
         for field in data:
             if data[field] == '':

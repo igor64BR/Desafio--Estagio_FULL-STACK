@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load bootstrap4 %}
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Índice</title>
+    {% bootstrap_css %}
+</head>
+<body>
+    <h1>TESTE DE APLICAÇÃO</h1>
+    <div class="container">
+        <h1>Contato</h1>
+        {% bootstrap_messages %}
+
+        <form class="form" method="post" action="{% url 'evento' %}" autocomplete="off">
+<!--         # Validador do formulário a partir do token - Segurança-->
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% buttons %}
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            {% endbuttons %}
+        </form>
+    </div>
+
+{% bootstrap_javascript jquery='full'%}
+</body>
+</html>
