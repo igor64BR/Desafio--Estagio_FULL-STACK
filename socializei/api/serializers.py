@@ -8,7 +8,7 @@ class EventoSerializer(serializers.ModelSerializer):
         many=True,
         read_only=True
     )
-    sucesso = True
+    # sucesso = True
     error_messages = []
 
     class Meta:
@@ -22,19 +22,18 @@ class EventoSerializer(serializers.ModelSerializer):
             'organizadores',
         )
 
-    # def validate(self, data):  # É neste modelo que será feita a validação de erros
-    #     self.error_messages = []
-    #
-    #     for field in data:
-    #         print(type(field))
-    #         if data[field] == '':
-    #             self.error_messages.append(f'{field.title()} cannot be blank')
-    #             self.sucesso = False
-    #
-    #     if self.sucesso:
-    #         return data
-    #     else:
-    #         raise serializers.ValidationError(self.error_messages)
+    def validate(self, data):  # É neste modelo que será feita a validação de erros
+        error_messages = []
+
+        for field in data:
+            # print(type(field))
+            if data[field] == '':
+                self.error_messages.append(f'{field.title()} cannot be blank')
+                self.sucesso = False
+        # if self.sucesso:
+            return data
+        else:
+            raise serializers.ValidationError(self.error_messages)
 
 
 class OrganizadorSerializer(serializers.ModelSerializer):
