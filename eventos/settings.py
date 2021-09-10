@@ -9,6 +9,14 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
+
+"""
+Login para a área de administração:
+    Login: administrador
+    Senha: 123456
+    
+Token: 833a131f0059f0d7b86f089d6f0c1cf7222fff80  # Pode ser encontrado também na aba de administração
+"""
 from os.path import join
 from pathlib import Path
 import rest_framework
@@ -142,7 +150,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     # Formas de autenticação possíveis
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.SessionAuthentication',   # Autenticação por log in
+        # 'rest_framework.authentication.SessionAuthentication',   # Autenticação por log in
         'rest_framework.authentication.TokenAuthentication'      # Autenticação por token
     ),
     # Restrições de ações
