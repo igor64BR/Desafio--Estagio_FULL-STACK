@@ -18,11 +18,15 @@ class Evento(models.Model):
 class Organizador(models.Model):
     nome = models.CharField(max_length=100)
     sobrenome = models.CharField(max_length=100)
+
+    # Insere-se o ID do evento ao criar o organizador e, desta forma este será listado como organizador daquele
     evento = models.ForeignKey(on_delete=models.CASCADE, to=Evento, related_name='organizadores')
 
     class Meta:
         verbose_name = 'Organzador'
         verbose_name_plural = 'Organizadores'
+
+        # Limita a implementação de apenas um organizador por evento, baseado no seu nome completo
         unique_together = ['nome', 'sobrenome', 'evento']
 
     def __str__(self):

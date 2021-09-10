@@ -1,8 +1,6 @@
-from ast import Index
-
 from rest_framework import viewsets, mixins, status
 from rest_framework.response import Response
-
+# Locais
 from socializei.api.serializers import EventoSerializer, OrganizadorSerializer
 from socializei.models import Evento, Organizador
 
@@ -15,6 +13,9 @@ class EventoViewSet(
     mixins.DestroyModelMixin,
     viewsets.GenericViewSet
 ):
+    """
+        Classe responsável pela View Set dos eventos na API REST
+    """
     queryset = Evento.objects.all()
     serializer_class = EventoSerializer
 
@@ -90,5 +91,8 @@ class OrganizadorViewSet(
     mixins.DestroyModelMixin,
     viewsets.GenericViewSet
 ):
+    """
+            Classe responsável pela View Set dos eventos na API REST
+    """
     queryset = Organizador.objects.all()
     serializer_class = OrganizadorSerializer
