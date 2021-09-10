@@ -151,7 +151,7 @@ REST_FRAMEWORK = {
     # Formas de autenticação possíveis
     'DEFAULT_AUTHENTICATION_CLASSES': (
         # 'rest_framework.authentication.SessionAuthentication',   # Autenticação por log in
-        'rest_framework.authentication.TokenAuthentication'      # Autenticação por token
+        'rest_framework.authentication.TokenAuthentication',      # Autenticação por token
     ),
     # Restrições de ações
     'DEFAULT_PERMISSION_CLASSES': (

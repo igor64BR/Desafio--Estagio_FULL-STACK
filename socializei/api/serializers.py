@@ -12,6 +12,7 @@ class EventoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Evento
         fields = (
+            'id',
             'titulo',
             'inicio',
             'fim',
@@ -29,6 +30,7 @@ class OrganizadorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Organizador
         fields = (
+            'id',
             'nome',
             'sobrenome',
             'evento',
