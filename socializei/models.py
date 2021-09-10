@@ -5,7 +5,6 @@ class Evento(models.Model):
     titulo = models.CharField(max_length=45, blank=False)
     inicio = models.CharField(max_length=10, blank=True)  # Data no formato dd/mm/yyyy
     fim = models.CharField(max_length=10, blank=True)
-    sucesso = models.CharField(blank=True, default='true', max_length=5)
     # Os organizadores serão serializados/apresentados a partir do arquivo serializer.py, dentro do diretório "api"
 
     class Meta:
