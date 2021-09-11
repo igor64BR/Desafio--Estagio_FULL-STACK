@@ -17,9 +17,7 @@ def organizadores(request):
     form = OrganizadorForm(request.POST or None)
     if str(request.method) == 'POST':
         if form.is_valid():
-            nome = form.cleaned_data['nome']
-            sobrenome = form.cleaned_data['sobrenome']
-            evento = form.cleaned_data['evento']
+            form.save()
 
     form = OrganizadorForm()
     context = {
@@ -29,15 +27,78 @@ def organizadores(request):
 
 
 def evento(request):
-    form = EventoForm()
+    form = EventoForm(request.POST, request.FILES)
     if str(request.method) == 'POST':
-        if form.is_valid():
-            titulo = form.cleaned_data['titulo']
-            inicio = form.cleaned_data['inicio']
-            fim = form.cleaned_data['fim']
+        erros = []
+        sucesso = True
+        if str(request.method) == 'POST':
+            titulo = form.data.get('titulo')
+            inicio = form.data.get('inicio')
+            fim = form.data.get('fim')
 
-    form = EventoForm()
+            if len(titulo) > 45:
+                erros.append('Insira um título de, no máximo 45 caracteres')
+            try:
+                if '/' in inicio and '/' in fim:
+                    inicio = inicio.split('/')
+                    dia_inicio = int(inicio[0])
+                    mes_inicio = int(inicio[1])
+                    ano_inicio = int(inicio[2])
+
+                    fim = fim.split('/')
+                    dia_fim = int(fim[0])
+                    mes_fim = int(fim[1])
+                    ano_fim = int(fim[2])
+
+                    if not 1 <= dia_inicio <= 31 or \
+                            not 1 <= mes_inicio <= 12 or \
+                            ano_inicio <= 2020:
+                        erros.append('A data inicial deve estar no padrão DD/MM/AAAA e deve ser atual')
+                        sucesso = False
+
+                    if not 1 <= dia_fim <= 31 or \
+                            not 1 <= mes_fim <= 12 or \
+                            ano_fim <= 2020:
+                        erros.append('A data final deve estar no padrão DD/MM/AAAA e deve ser atual')
+                        sucesso = False
+
+                    if ano_fim < ano_inicio:
+                        erros.append('A data final deve ser maior que a inicial')
+                        sucesso = False
+
+                    elif ano_fim == ano_inicio:
+                        if mes_fim < mes_inicio:
+                            erros.append('A data final deve ser maior que a inicial')
+                            sucesso = False
+                        elif mes_fim == mes_inicio:
+                            if dia_fim <= dia_inicio:
+                                erros.append('A data final deve ser maior que a inicial')
+                                sucesso = False
+                else:
+                    erros.append('Faltam as \'/\' em uma das datas')
+                    sucesso = False
+
+            except IndexError:
+                erros.append('Faltam campos separados por \'/\'')
+                sucesso = False
+            except ValueError:
+                erros.append('Algo nas suas datas não está certo')
+                sucesso = False
+
+        fim_erros = ''
+        for erro in erros:
+            if erro != erros[0]:
+                fim_erros += f'; {erro}'
+            else:
+                fim_erros += erro
+
+        if sucesso and form.is_valid():
+            form.save()
+            form = EventoForm()
+            messages.success(request, 'Dados salvos com sucesso!!')
+        else:
+            messages.error(request, f'ERROR: {fim_erros}')
     context = {
         'form': form
     }
-    return render(request, 'evento.html', context=context)
+    return render(request, 'evento.html', context)

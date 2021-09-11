@@ -142,7 +142,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATC_ROOT = join(BASE_DIR, 'staticfiles')
-MEDIA_URL = '/media/'
+MEDIA_URL = 'media/'
 MEDIA_ROOT = join(BASE_DIR, 'media')
 
 # Default primary key field type
