@@ -1,22 +1,39 @@
 <!DOCTYPE html>
 {% load bootstrap4 %}
+{% load static %}
 <html lang="pt=br">
 <head>
     <meta charset="UTF-8">
     <title>Organizadores</title>
     {% bootstrap_css %}
+    <link href="{% static 'css.css' %}" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <h1>TESTE DOS ORGANIZADORES</h1>
+
+    <nav class="navbar navbar-light" style="background-color: #F4EEE8">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'indice' %}">
+                <img src="{% static 'media/A.png' %}" alt="" width="21" height="24" class="d-inline-block align-text-top">
+                  <b>
+                  &nbsp;&nbsp;&nbsp;Socializei!
+                  </b>
+            </a>
+            <h1 class="navbar-brand" style="color: #111111">
+                <b>Igor Baiocco</b>
+            </h1>
+        </div>
+    </nav>
+    <br><br><br>
     {% bootstrap_messages %}
     <div class="container">
-        <form action="{% url 'organizador' %}" method="post" autocomplete="off" class="form">
+        <form action="{% url 'organizador' %}" method="post" autocomplete="off" class="form" style="color: #F4EEE8">
             {% csrf_token %}
             {% bootstrap_form form %}
             {% buttons %}
                 <button class="btn btn-primary" type="submit">Enviar</button>
             {% endbuttons %}
         </form>
+        <a href="{% url 'indice' %}"><button type="button" class="btn btn-primary">Voltar ao início</button></a>
     </div>
 
     {% bootstrap_javascript jquery='full' %}

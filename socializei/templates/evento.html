@@ -1,27 +1,43 @@
 <!DOCTYPE html>
 {% load bootstrap4 %}
+{% load static %}
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <title>Índice</title>
+    <link href="{% static 'css.css' %}" rel="stylesheet" type="text/css">
     {% bootstrap_css %}
 </head>
 <body>
-    <h1>TESTE DE APLICAÇÃO</h1>
+    <nav class="navbar navbar-light" style="background-color: #F4EEE8">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'indice' %}">
+                <img src="{% static 'media/A.png' %}" alt="" width="21" height="24" class="d-inline-block align-text-top">
+                  <b>
+                  &nbsp;&nbsp;&nbsp;Socializei!
+                  </b>
+            </a>
+            <h1 class="navbar-brand" style="color: #111111">
+                <b>Igor Baiocco</b>
+            </h1>
+        </div>
+    </nav>
+    <br><br><br>
+
     <div class="container">
-        <h1>Contato</h1>
+        <h1 style="color: #F4EEE8">Contato</h1>
         {% bootstrap_messages %}
 
-        <form class="form" method="post" action="{% url 'evento' %}" autocomplete="off">
+        <form class="form" method="post" action="{% url 'evento' %}" autocomplete="off" style="color:#F4EEE8">
 <!--         # Validador do formulário a partir do token - Segurança-->
             {% csrf_token %}
             {% bootstrap_form form %}
             {% buttons %}
-                <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" class="btn btn-primary" id="submitted">Enviar</button>
             {% endbuttons %}
         </form>
+        <a href="{% url 'indice' %}"><button type="button" class="btn btn-primary">Voltar ao início</button></a>
     </div>
-
 {% bootstrap_javascript jquery='full'%}
 </body>
 </html>

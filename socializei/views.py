@@ -1,19 +1,24 @@
 import django.contrib.admindocs.views
 from django.contrib import messages
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from socializei.forms import OrganizadorForm, EventoForm
+from socializei.models import Evento, Organizador
 
 
 def index(request):
     form = EventoForm()
+    eventos_itens = Evento.objects.all()
+    organizadores_itens = Organizador.objects.all()
     context = {
-        'form': form
+        'form': form,
+        'eventos': eventos_itens,
+        'organizadores': organizadores_itens,
     }
     return render(request=request, template_name='index.html', context=context)
 
 
-def organizadores(request):
+def organizador_form(request):
     form = OrganizadorForm(request.POST or None)
     if str(request.method) == 'POST':
         if form.is_valid():
@@ -26,7 +31,7 @@ def organizadores(request):
     return render(request, 'organizadores.html', context=context)
 
 
-def evento(request):
+def evento_form(request):
     form = EventoForm(request.POST, request.FILES)
     if str(request.method) == 'POST':
         erros = []
@@ -99,6 +104,20 @@ def evento(request):
         else:
             messages.error(request, f'ERROR: {fim_erros}')
     context = {
-        'form': form
+        'form': form,
     }
     return render(request, 'evento.html', context)
+
+
+def evento_detail(request, pk):
+    evento = get_object_or_404(Evento, id=pk)
+    todos_organizadores = Organizador.objects.all()
+    organizadores = []
+    for organizador in todos_organizadores:
+        if organizador.evento.id == pk:
+            organizadores.append(organizador)
+    context = {
+        'evento': evento,
+        'organizadores': organizadores
+    }
+    return render(request, 'evento_detail.html', context)

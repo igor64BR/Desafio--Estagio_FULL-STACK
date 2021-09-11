@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load bootstrap4 %}
+{% load static %}
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Índice</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css.css' %}">
+    {% bootstrap_css %}
+</head>
+<body >
+
+    <nav class="navbar navbar-light" style="background-color: #F4EEE8">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'indice' %}">
+                <img src="{% static 'media/A.png' %}" alt="" width="21" height="24" class="d-inline-block align-text-top">
+                  <b>
+                  &nbsp;&nbsp;&nbsp;Socializei!
+                  </b>
+            </a>
+            <h1 class="navbar-brand" style="color: #111111">
+                <b>Igor Baiocco</b>
+            </h1>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div>
+            <br><br>
+            <h1 style="color: #F4EEE8">{{ evento }}</h1>
+<!--            <table class="table table-dark table-striped">-->
+                <table class="table table-primary table-striped table-bordered">
+                    <thead>
+                    <tr style="color:#0dcaf0">
+                        <th scope="col" style="color:#312e35"><b>ID</b></th>
+                        <th scope="col" style="color:#312e35"><b>Nome</b></th>
+                        <th scope="col" style="color:#312e35"><b>Sobrenome</b></th>
+                        <th scope="col" style="color:#312e35"><b>Evento</b></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+
+                    <tbody class="table table-striped">
+                            {% for organizador in organizadores %}
+                                {% if organizador.evento.id == evento.id %}
+                                    <tr style="color:gainsboro" class="table-active">
+                                        <th style="color: #114E60">{{ organizador.id }}</th>
+                                        <th style="color: #114E60" scope="row">{{ organizador.nome }}</th>
+                                        <th style="color: #114E60">{{ organizador.sobrenome }}</th>
+                                        <th style="color: #114E60">{{ organizador.evento }}</th>
+                                        <th><button type="button" class="btn btn-danger">Deletar</button></th>
+                                    </tr>
+                                {% endif %}
+                            {% endfor %}
+                    </tbody>
+                </table>
+        </div>
+        <a href="{% url 'organizador' %}"><button type="button" class="btn btn-info" rel="">Registrar organizador</button></a>
+        <a href="{% url 'indice' %}"><button type="button" class="btn btn-primary">Voltar ao início</button></a>
+        {% bootstrap_messages %}
+    </div>
+    <br><br><br><br>
+
+
+{% bootstrap_javascript jquery='full'%}
+</body>
+</html>
