@@ -16,7 +16,7 @@ Login para a área de administração:
     Login: administrador
     Senha: 123456
     
-Token: 833a131f0059f0d7b86f089d6f0c1cf7222fff80  # Pode ser encontrado também na aba de administração
+Token: 04375477140f8f11b5f18628133044b44562bd6e  # Pode ser encontrado também na aba de administração
 """
 from os.path import join
 from pathlib import Path
