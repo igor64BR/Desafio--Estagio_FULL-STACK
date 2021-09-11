@@ -32,6 +32,8 @@ def organizador_form(request):
 
 def evento_form(request):
     form = EventoForm()
+
+    # Validação de campos
     if str(request.method) == 'POST':
         form = EventoForm(request.POST, request.FILES)
         erros = []
@@ -105,6 +107,7 @@ def evento_form(request):
             messages.success(request, 'Dados salvos com sucesso!!')
         else:
             messages.error(request, f'ERROR: {fim_erros}')
+
     context = {
         'form': form,
     }
@@ -134,7 +137,7 @@ def delete_evento(request, pk):
         'eventos': eventos_itens,
         'organizadores': organizadores_itens,
     }
-    return render(request, 'index.html', context)
+    return render(request, 'delete.html', context)
 
 
 def delete_organizador(request, pk):
@@ -146,4 +149,4 @@ def delete_organizador(request, pk):
         'eventos': eventos_itens,
         'organizadores': organizadores_itens,
     }
-    return render(request, 'index.html', context)
+    return render(request, 'delete.html', context)

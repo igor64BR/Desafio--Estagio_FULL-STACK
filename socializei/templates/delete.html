@@ -1,10 +1,38 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+{% load bootstrap4 %}
+{% load static %}
+<html lang="pt-br" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Delete</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css.css' %}">
+    {% bootstrap_css %}
 </head>
 <body>
-    {% evento.delete() %}
+    <nav class="navbar navbar-light" style="background-color: #F4EEE8">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'indice' %}">
+                <img src="{% static 'media/A.png' %}" alt="" width="21" height="24" class="d-inline-block align-text-top">
+                  <b>
+                  &nbsp;&nbsp;&nbsp;Socializei!
+                  </b>
+            </a>
+            <h1 class="navbar-brand" style="color: #111111">
+                <b>Igor Baiocco</b>
+            </h1>
+        </div>
+    </nav>
+    <br><br><br><br><br><br>
+    <div class="container">
+        <h1 style="color: #F4EEE8">
+            <b><strong>Deletado com sucesso!</strong></b>
+        </h1>
+        <br><br>
+        <a href="{% url 'indice' %}">
+            <button type="button" class="btn btn-info">
+                Voltar ao início
+            </button>
+        </a>
+    </div>
 </body>
 </html>
