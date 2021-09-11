@@ -30,10 +30,10 @@
             {% csrf_token %}
             {% bootstrap_form form %}
             {% buttons %}
-                <button class="btn btn-primary" type="submit">Enviar</button>
+                <button class="btn btn-info" type="submit">Enviar</button>
             {% endbuttons %}
         </form>
-        <a href="{% url 'indice' %}"><button type="button" class="btn btn-primary">Voltar ao início</button></a>
+        <a href="{% url 'indice' %}"><button type="button" class="btn btn-info">Voltar ao início</button></a>
     </div>
 
     {% bootstrap_javascript jquery='full' %}

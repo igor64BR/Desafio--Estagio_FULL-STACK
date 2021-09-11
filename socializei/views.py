@@ -32,8 +32,9 @@ def organizador_form(request):
 
 
 def evento_form(request):
-    form = EventoForm(request.POST, request.FILES)
+    form = EventoForm()
     if str(request.method) == 'POST':
+        form = EventoForm(request.POST, request.FILES)
         erros = []
         sucesso = True
         if str(request.method) == 'POST':
