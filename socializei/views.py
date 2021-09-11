@@ -89,6 +89,8 @@ def evento_form(request):
             except ValueError:
                 erros.append('Algo nas suas datas não está certo')
                 sucesso = False
+            except TypeError:
+                erros.append('Favor inserir apenas os números divididos por barras nas datas')
 
         fim_erros = ''
         for erro in erros:
