@@ -48,7 +48,9 @@
                                         <th style="color: #114E60" scope="row">{{ organizador.nome }}</th>
                                         <th style="color: #114E60">{{ organizador.sobrenome }}</th>
                                         <th style="color: #114E60">{{ organizador.evento }}</th>
-                                        <th><button type="button" class="btn btn-danger">Deletar</button></th>
+                                        <th><a href="{% url 'deletar_organizador' organizador.id %}">
+                                        <button type="button" class="btn btn-danger">Deletar</button>
+                                        </a></th>
                                     </tr>
                                 {% endif %}
                             {% endfor %}

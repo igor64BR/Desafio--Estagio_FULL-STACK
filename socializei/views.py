@@ -2,16 +2,15 @@ import django.contrib.admindocs.views
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404
 
+import eventos.settings
 from socializei.forms import OrganizadorForm, EventoForm
 from socializei.models import Evento, Organizador
 
 
 def index(request):
-    form = EventoForm()
     eventos_itens = Evento.objects.all()
     organizadores_itens = Organizador.objects.all()
     context = {
-        'form': form,
         'eventos': eventos_itens,
         'organizadores': organizadores_itens,
     }
@@ -122,3 +121,27 @@ def evento_detail(request, pk):
         'organizadores': organizadores
     }
     return render(request, 'evento_detail.html', context)
+
+
+def delete_evento(request, pk):
+    evento = get_object_or_404(Evento, id=pk)
+    evento.delete()
+    eventos_itens = Evento.objects.all()
+    organizadores_itens = Organizador.objects.all()
+    context = {
+        'eventos': eventos_itens,
+        'organizadores': organizadores_itens,
+    }
+    return render(request, 'index.html', context)
+
+
+def delete_organizador(request, pk):
+    organizador = get_object_or_404(Organizador, id=pk)
+    organizador.delete()
+    eventos_itens = Evento.objects.all()
+    organizadores_itens = Organizador.objects.all()
+    context = {
+        'eventos': eventos_itens,
+        'organizadores': organizadores_itens,
+    }
+    return render(request, 'index.html', context)

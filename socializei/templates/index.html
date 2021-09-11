@@ -56,8 +56,13 @@
                                     {% endfor %}
                                 </th>
                                 <th>
-                                    <a href="{% url 'evento_detail' evento.id %}"><button type="button" class="btn btn-primary">Detalhes</button></a>
-                                <th><button type="button" class="btn btn-danger">Deletar</button></th>
+                                    <a href="{% url 'evento_detail' evento.id %}">
+                                        <button type="button" class="btn btn-primary">Detalhes</button>
+                                    </a>
+                                </th>
+                                <th><a href="{% url 'deletar_evento' evento.id %}">
+                                <button type="button" class="btn btn-danger">Deletar</button>
+                                </a></th>
                             </tr>
                             {% endfor %}
                     </tbody>
