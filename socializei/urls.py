@@ -7,6 +7,13 @@ from socializei.views import index, organizador_form, evento_form, evento_detail
 router = routers.SimpleRouter()
 router.register('eventos', EventoViewSet)
 router.register('organizadores', OrganizadorViewSet)
+"""
+A variavel router lista, respectivamente, os eventos e organizadores:
+    api/v1/eventos
+    api/v1/organizadores
+Para mostrar apenas um item para editá-lo ou deletá-lo:
+    .../(id_do_item)  # Exemplo: http://localhost:8000/api/v1/eventos/1/
+"""
 
 urlpatterns = [
     path('', index, name='indice'),
