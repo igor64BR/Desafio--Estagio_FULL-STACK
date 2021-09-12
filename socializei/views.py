@@ -22,6 +22,9 @@ def organizador_form(request):
     if str(request.method) == 'POST':
         if form.is_valid():
             form.save()
+            messages.success(request, 'Organizador registrado com sucesso!')
+        else:
+            messages.error(request, 'OOPS! Algo deu errado... Cheque suas informações e tente novamente')
 
     form = OrganizadorForm()
     context = {

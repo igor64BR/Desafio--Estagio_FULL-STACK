@@ -1,14 +1,17 @@
-Olá! Meu nome é Igor Baiocco
+# Socializei!
+<p align="center">Este projeto é um desafio para o processo seletivo para estágio na IndustriALL, cujo devo desenvolver uma aplicação WEB
+e uma API RESTful para o cadastro de eventos e registro via JSON, respectivamente.</p> 
 
-Este projeto é um desafio para o processo seletivo para estágio na IndustriALL, cujo devo desenvolver uma aplicação WEB
-e uma API RESTful para o cadastro de eventos e registro via JSON, respectivamente. 
+![Badge]()
+
+Olá! Meu nome é Igor Baiocco
 
 Decidi utilizar o Django REST Framework, pois trabalha com o método MTV - Model, View, Template - e consegue trabalhar 
 de modo escalável, ou seja, é passível de processar o crescimento de sua estrutura e de número de usuários de forma 
 estável, além de também poder trabalhar usando cache e múltiplos db de backup. Além disso, por se tratar de uma frame-
 work programada em Python, toda sua otimização de código da linguagem é replicada no Django.
 
-COMO UTILIZAR:
+## COMO UTILIZAR:
     
     
         Antes de qualquer coisa, instale os itens solicitados no arquivo 'requirements.txt' utilizando o pip - caso o 

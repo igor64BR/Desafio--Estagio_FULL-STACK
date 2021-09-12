@@ -24,8 +24,9 @@
         </div>
     </nav>
     <br><br><br>
-    {% bootstrap_messages %}
     <div class="container">
+        <h1 style="color: #F4EEE8">Novo Organizador</h1>
+        {% bootstrap_messages %}
         <form action="{% url 'organizador' %}" method="post" autocomplete="off" class="form" style="color: #F4EEE8">
             {% csrf_token %}
             {% bootstrap_form form %}

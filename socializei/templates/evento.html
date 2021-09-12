@@ -25,9 +25,8 @@
     <br><br><br>
 
     <div class="container">
-        <h1 style="color: #F4EEE8">Contato</h1>
+        <h1 style="color: #F4EEE8">Novo Evento</h1>
         {% bootstrap_messages %}
-
         <form class="form" method="post" action="{% url 'evento' %}" autocomplete="off" style="color:#F4EEE8">
 <!--         # Validador do formulário a partir do token - Segurança-->
             {% csrf_token %}
