@@ -51,8 +51,8 @@ python manage.py migrate
   ## Faça as migrations e crie o db
   python manage.py migrate --run-sncdb
 
-  ## Crie as credenciais do super usuário
-  python manage.py createsuperuser
+# Crie as credenciais do super usuário
+python manage.py createsuperuser
 
 # Inicie o servidor
 python manage.py runserver
