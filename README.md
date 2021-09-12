@@ -48,11 +48,11 @@ python manage.py makemigrations
 python manage.py migrate
 
 # Caso não o arquivo db.sqlite3 não esteja no projeto:
-## Faça as migrations e crie o db
-python manage.py migrate --run-sncdb
+  ## Faça as migrations e crie o db
+  python manage.py migrate --run-sncdb
 
-## Crie as credenciais do super usuário
-python manage.py createsuperuser
+  ## Crie as credenciais do super usuário
+  python manage.py createsuperuser
 
 # Inicie o servidor
 python manage.py runserver
@@ -62,6 +62,14 @@ http://localhost:8000/
 
 # Acesse a API em sua primeira versão (V1)
 http://localhost:8000/api/v1/  # As Endpoints estão listadas em 'url.py' no diretório 'socializei'
+```
+
+## Obs.:
+```bash
+Para inserir os dados, modificá-los ou deletá-los dentro da API, o usuário deve estar logado na área de administração ou
+inserir o token de usuário no header da API:
+Para a permissão via token, deve-se entrar na uri '/admin/', logando com o super usuário criado e, na seção de token, 
+criar um novo para o seu usuário 
 ```
 
 # Autor

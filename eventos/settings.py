@@ -9,15 +9,6 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
-
-"""
-Login para a área de administração:
-    Login: administrador
-    Senha: 123456
-    
-Token: 04375477140f8f11b5f18628133044b44562bd6e  # Pode ser encontrado também na aba de administração
-"""
 from os.path import join
 from pathlib import Path
 import rest_framework
