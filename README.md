@@ -3,8 +3,8 @@
 
 # Sobre o Projeto:
 
-Este projeto é um desafio para o processo seletivo para estágio na **IndustriALL**, cujo devo desenvolver uma **aplicação WEB**
-e uma **API RESTful** para o cadastro de eventos e registro via JSON, respectivamente. 
+Este projeto é um desafio para o processo seletivo para estágio na **IndustriALL**, cujo objetivo é desenvolver uma 
+**aplicação WEB** e uma **API RESTful** para o cadastro de eventos e registro via JSON, respectivamente. 
 
 Decidi utilizar o **Django REST Framework**, pois trabalha com o método MTV - Model, View, Template - e consegue trabalhar 
 de modo escalável, ou seja, é passível de processar o crescimento de sua estrutura e de número de usuários de forma 
